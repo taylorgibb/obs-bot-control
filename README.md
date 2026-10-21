@@ -4,7 +4,6 @@ A macOS menu bar app with a camera icon that controls an OBSBOT Tiny 2 or Tiny 2
 
 - Tracking: Normal, Upper Body, Close-Up, Headless, Lower Body, Group, Hand, Whiteboard, Disable
 - Gestures: Target Select, Zoom, Dynamic Zoom, Zoom Direction, Disable All
-- Launch at Login toggle
 
 Requires macOS 14 or newer. The app makes no network calls. It opens the camera only when the menu opens or an item is chosen and releases it straight after, because the camera allows one open handle at a time.
 
