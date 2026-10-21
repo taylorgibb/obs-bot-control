@@ -2,6 +2,8 @@ import AppKit
 import ServiceManagement
 
 final class MenuController: NSObject, NSMenuDelegate {
+    private static let loginItemOfferedKey = "loginItemOffered"
+
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private let camera = CameraMenu()
     private let launchAtLogin = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
@@ -9,6 +11,7 @@ final class MenuController: NSObject, NSMenuDelegate {
     override init() {
         super.init()
         configureButton()
+        registerLoginItemOnFirstLaunch()
         let menu = NSMenu()
         menu.delegate = self
         menu.autoenablesItems = false
@@ -16,8 +19,17 @@ final class MenuController: NSObject, NSMenuDelegate {
         menu.addItem(.separator())
         launchAtLogin.target = self
         menu.addItem(launchAtLogin)
-        menu.addItem(NSMenuItem(title: "Quit OBS Bot Control", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        let quit = NSMenuItem(title: "Quit OBS Bot Control", action: #selector(quitApplication), keyEquivalent: "q")
+        quit.target = self
+        menu.addItem(quit)
         statusItem.menu = menu
+    }
+
+    private func registerLoginItemOnFirstLaunch() {
+        let defaults = UserDefaults.standard
+        guard !defaults.bool(forKey: Self.loginItemOfferedKey) else { return }
+        defaults.set(true, forKey: Self.loginItemOfferedKey)
+        try? SMAppService.mainApp.register()
     }
 
     private func configureButton() {
@@ -43,5 +55,9 @@ final class MenuController: NSObject, NSMenuDelegate {
         } else {
             try? service.register()
         }
+    }
+
+    @objc private func quitApplication() {
+        NSApplication.shared.terminate(nil)
     }
 }
