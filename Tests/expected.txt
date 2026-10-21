@@ -1,0 +1,18 @@
+exposure aa 25 16 00 0c 00 58 91 0a 02 82 29 05 00 b2 af 02 04
+targetSelect on aa 25 16 00 0c 00 4b 3a 0a 04 c4 30 01 00 27 ff 01
+targetSelect off aa 25 16 00 0c 00 4b 3a 0a 04 c4 30 01 00 e6 3f 00
+zoom on aa 25 16 00 0c 00 eb 3a 0a 04 44 31 01 00 27 ff 01
+zoom off aa 25 16 00 0c 00 eb 3a 0a 04 44 31 01 00 e6 3f 00
+dynamicZoom on aa 25 16 00 0c 00 6a fb 0a 04 44 33 01 00 27 ff 01
+dynamicZoom off aa 25 16 00 0c 00 6a fb 0a 04 44 33 01 00 e6 3f 00
+zoomDirection on aa 25 16 00 0c 00 0b 3b 0a 04 c4 33 01 00 27 ff 01
+zoomDirection off aa 25 16 00 0c 00 0b 3b 0a 04 c4 33 01 00 e6 3f 00
+status request aa 01 04 4c 0c 00 a0 82 0a 04 04 01
+captured reply targetSelect
+wrong sequence rejected
+corrupted payload rejected
+tracking idle disabled
+tracking upper upperBody
+tracking transient changing
+tracking set 16 02 02 02
+tracking off 16 02 00 00
